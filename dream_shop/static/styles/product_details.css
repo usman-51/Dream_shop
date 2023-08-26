@@ -1,0 +1,213 @@
+/* Defines the background of the product page */
+.background-detail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+/* Class for the product card */
+.product-card-detail {
+  position: relative;
+  display: flex;
+  margin: auto;
+  width: 55%;
+  background-color: rgba(255, 255, 255, 0.7); 
+  border: 8px solid #315D68;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.35),
+              inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+              inset 5px 5px 15px rgba(49, 93, 104, 0.8);
+  padding: 40px;
+  padding-bottom: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  gap: 20px;
+}
+
+/* Class for the product image */
+.product-image-detail {
+  flex: 45%;
+  padding-bottom: 50px;
+}
+
+/* Class for the style of the image itself */
+.product-image-detail img {
+  width: 97%;
+  height: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+/* Class for the product information */
+.product-info-detail {
+  flex: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+  background: rgba(49, 93, 104, 0.1);
+  border-left: 5px solid #315D68;
+  padding-left: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Class for the product title (name) */
+.product-info-detail h2 {
+  color: #315D68;
+  margin-right: 30px;
+  margin-top: 20px;
+  font-size: 2.5em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  font-family: 'Ananda', arial, cursive, sans-serif;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Class for the product price */
+.product-info-detail h3 {
+  color: #315D68;
+  margin-right: 30px;
+  font-size: 1.5em;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Class for the product description */
+.product-info-detail p {
+  color: #315D68;
+  margin-right: 30px;
+  text-align: justify;
+  font-size: 1.2em;
+  font-weight: 300;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Class for the quantity selection container */
+.select-quantity-detail {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin-right: 30px;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Class for the "number" type input */
+.product-info-detail input[type="number"] {
+  height: 1px;
+}
+
+/* Class for the style of the quantity selector and number input */
+.product-info-detail select,
+.product-info-detail input[type="number"] {
+  padding: 15px;
+  margin-top: 10px;
+  border: none;
+  background: #315D68;
+  color: #fff;
+  border-radius: 25px;
+  font-size: 1.1em;
+  opacity: 0.7;
+  transition: 0.5s;
+  outline: none;
+  width: 62%;
+}
+
+/* Class for the purchase button */
+.product-info-detail .btn-detail {
+  border: none;
+  padding: 15px 0;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  color: #fff;
+  background: #315D68;
+  cursor: pointer;
+  font-family: 'Ananda';
+  letter-spacing: 0.15em;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+  width: 97%;
+  font-size: 18px;
+  border-radius: 5px;
+} 
+
+/* Class for the purchase button when hovered */
+.product-info-detail .btn-detail:hover {
+  background: #1a2e45;
+  color: #ffffff;
+}
+
+/* Icon styling within the purchase button */
+.product-info-detail .btn-detail i {
+  padding-left: 20px;
+  color: white;
+}
+
+/* Common styles for titles, paragraphs, and quantity container */
+.product-info-detail h2,
+.product-info-detail h3,
+.product-info-detail p,
+.select-quantity-detail {
+  border-bottom: 1px solid #CCC; 
+  padding-bottom: 15px;
+  margin-top: 66px;
+  margin-bottom: 15px;
+}
+
+/* Specific styles for titles */
+.product-info-detail h2:before {
+  content: "\f06b";
+  font-family: FontAwesome;
+  margin-right: 10px;
+  padding-right: 20px;
+}
+
+/* Specific styles for subtitles */
+.product-info-detail h3:before {
+  content: "\f153"; 
+  font-family: FontAwesome;
+  margin-right: 10px;
+  padding-right: 20px;
+}
+
+/* Styles for the quantity container */
+.select-quantity-detail > div {
+  flex: 1;
+}
+
+/* Styles for thumbnail images */
+.product-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Styles for the thumbnail container */
+.product-thumbnails {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+/* Styles for each thumbnail */
+.product-thumbnail {
+  flex: 1;
+  max-width: 20%;
+  max-height: 100px;
+  margin-top: 10px;
+  height: auto;
+  object-fit: cover;
+}

@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Sign-up Page -->
+<div class="background-signup"></div>
+<div class="container-signup">
+    <!-- Include alerts section for displaying form errors or success messages -->
+    {% include 'includes/alerts.html' %}
+    <form action="{% url 'register' %}" method="POST">
+        <!-- Container to display form errors -->
+        <div id="form_errors"></div>
+        {{ form.email.errors }}
+        {{ form.non_field_errors }}
+        <div class="form signup">
+            <h2>Registration</h2>
+            <!-- Include CSRF token for security -->
+            {% csrf_token %}
+            <!-- Radio buttons for selecting civility -->
+            <div class="inputBox radioInput">
+                <input type="radio" id="homme" name="civility" value="M" required="required">
+                <label for="homme">Sir</label>
+                <input type="radio" id="femme" name="civility" value="F" required="required">
+                <label for="femme">Madam</label>
+            </div>
+            <!-- Input fields for first name and last name -->
+            <div class="inputRow">
+                <div class="inputBox">
+                    <input type="text" name="first_name" required="required">
+                    <i class="fa-solid fa-user-tag"></i>
+                    <span>First name</span>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="last_name" required="required">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Name</span>
+                </div>
+            </div>
+            <!-- Input fields for address and postal code -->
+            <div class="inputRow">
+                <div class="inputBox">
+                    <input type="text" name="address" required="required">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Address</span>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="postal_code" required="required">
+                    <i class="fa-solid fa-map-pin"></i>
+                    <span>Postal Code</span>
+                </div>
+            </div>
+            <!-- Input fields for city and country -->
+            <div class="inputRow">
+                <div class="inputBox">
+                    <input type="text" name="city" required="required">
+                    <i class="fa-solid fa-building"></i>
+                    <span>City</span>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="country" required="required">
+                    <i class="fa-sharp fa-solid fa-earth-americas"></i>
+                    <span>Country</span>
+                </div>
+            </div>
+            <!-- Input field for email address -->
+            <div class="inputBox">
+                <input type="email" name="email" required="required">
+                <i class="fa-solid fa-envelope"></i>
+                <span>E-mail Address</span>
+            </div>
+            <!-- Input fields for phone number and birth date -->
+            <div class="inputRow">
+                <div class="inputBox">
+                    <input type="tel" name="phone_number" required="required">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Phone number</span>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="birth_date" required="required">
+                    <i class="fa-solid fa-cake-candles"></i>
+                    <span>DD/MM/YYYY</span>
+                </div>
+            </div>
+            <!-- Input fields for password and confirm password -->
+            <div class="inputRow">
+                <div class="inputBox">
+                    <input type="password" name="password" required="required">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Create password</span>
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="confirm_password" required="required">
+                    <i class="fa-solid fa-lock-open"></i>
+                    <span>Confirm Password</span>
+                </div>
+            </div>
+            <!-- Submit button for creating an account -->
+            <div class="inputBox">
+                <input type="submit" value="Créer un compte">
+            </div>
+            <!-- Link to the login page for existing members -->
+            <p>Already a member ? <a href="{% url 'login' %}" class="login">Login</a></p>
+        </div>
+    </form>
+</div>
+
+<!-- AJAX script for form submission -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  // Execute code when the document is fully loaded
+  $(document).ready(function () {
+      // Attach event listener to the form submission
+      $('form').on('submit', function (event) {
+          event.preventDefault();
+          // Perform AJAX request
+          $.ajax({
+              url : "{% url 'register' %}", 
+              type : "POST",
+              data : $(this).serialize(),
+              success : function (response) {
+                  // Function executed upon successful AJAX request
+                  if (response.success) {
+                      window.location.href = "{% url 'register' %}";
+                  } else {  
+                      let errors = JSON.parse(response.errors);
+                      let error_messages = "";
+  
+                      // For each key (form field) in the errors
+                      for (let key in errors) {
+                          if (errors.hasOwnProperty(key)) {
+                              // For each error message for this field
+                              for (let i in errors[key]) {
+                                  if (errors[key].hasOwnProperty(i)) {
+                                      error_messages += "<p class='errorlist'>" + errors[key][i].message + "</p>";
+                                  }
+                              }
+                          }
+                      }
+                      $('#form_errors').html(error_messages);
+                  }
+              }
+          });
+      });
+  });
+  </script>
+
+{% endblock %}

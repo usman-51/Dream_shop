@@ -1,0 +1,84 @@
+{% load static %}
+
+<footer>
+    <div class="footer-container">
+        <!-- Contact Section -->
+        <div class="footer-contact" id="contact_section">
+            <h3>Contact</h3>
+            <p><strong>ADDRESS :</strong></p>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=7+Rue,+Florent+Evrard+62260+Auchel&travelmode=driving"
+                target="_blank" rel="noopener">
+                <p><em>7 Rue Florent Evrard, 62260 Auchel</em></p>
+            </a>
+            <p><strong>TELEPHONE :</strong></p>
+            <a href="tel:+33762253313">
+                <p>+33 7 62 25 33 13</p>
+            </a>
+            <p><strong>E-MAIL :</strong></p>
+            <a href="mailto:fashionx@gmail.com">
+                <p>
+                    <em>fashionx@gmail.com</em>
+                </p>
+            </a>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/profile.php?id=100089077755487" target="_blank"
+                    rel="noopener"><img src="{% static 'styles/images/logos-social/logo-facebook.svg' %}"
+                        alt="Logo facebook"></a>
+                <a href="https://www.instagram.com/maboutiquedereve/" target="_blank" rel="noopener"><img
+                        src="{% static 'styles/images/logos-social/logo-instagram.svg' %}"
+                        alt="Logo instagram"></a>
+            </div>
+        </div>
+        <!-- Logo and Newsletter Section -->
+        <div class="footer-logo-newsletter">
+            <a href="{% url 'register' %}" class="newsletter-button">Subscribe to the newsletter</a>
+            <div class="footer-logo">
+                <a href="{% url 'store' %}">
+                    <img src="{% static 'styles/images/MA_BOUTIQUE_LOGO_Fond-Couleur.png' %}" alt="Logo boutique">
+                </a>
+                <p><em>N°Siret:</em> 89419864700022</p>
+            </div>
+        </div>
+        <!-- Legal and Store Hours Section -->
+        <div class="footer-legal">
+            <h3>Informations</h3>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms and conditions</a>
+            <a href="#">Return policy</a>
+            <a href="#">Size guide</a>
+            <br>
+            <h3>Store hours</h3>
+            <select id="store-hours" class="custom-select">
+                <option value="0">Sunday: Closed</option>
+                <option value="1">Monday: Closed</option>
+                <option value="2">Tuesday: 10h-12h30, 13h30-18h</option>
+                <option value="3">Wednesday: 10h-12h30, 13h30-18h</option>
+                <option value="4">Thursday: 10h-12h30, 13h30-18h</option>
+                <option value="5">Friday: 10h-18h</option>
+                <option value="6">Saturday: 10h-18h</option>
+            </select>
+        </div>
+    </div>
+    <!-- Footer Copyright -->
+    <div class="footer-copyright-container">
+        <div class="footer-copyright">
+            <p>&copy; 2023 Fashion X. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="{% static 'script/script.js' %}"></script>
+<script>
+  // Function to set the selected store hours based on the current day  
+  (function () {
+    var dayOfWeek = new Date().getDay();
+    var storeHoursSelector = document.getElementById("store-hours");
+    storeHoursSelector.selectedIndex = dayOfWeek;
+  })();
+
+</script>
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+<script>
+  // Initialize AOS library for scroll animations  
+  AOS.init();
+</script>

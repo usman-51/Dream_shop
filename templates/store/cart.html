@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Cart is Empty -->
+{% if not cart_items %}
+<h2 class="empty-cart">your basket is empty</h2>
+<br><br>
+<div class="text-center">
+    <a href="{% url 'store' %}" class="btn-cart">Continue shopping</a>
+</div>
+{% else %}
+<!-- Cart Container -->
+<div class="cart-container">
+    <div style="flex: 0 0 70%; max-width: 70%;">
+        <!-- Cart Title -->
+        <h3 class="title-cart">Shopping cart</h3>
+        <div class="scrollable-cart-items">
+            <!-- Cart Items Table -->
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Size</th>
+                        <th>Color</th>
+                        <th>Quantity</th>
+                        <th>Unit price</th>
+                        <th>Total price</th>
+                        <th>DELETE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cart_item in cart_items %}
+                    <tr>
+                        <!-- Product Image -->
+                        <td><img class="product-img" src="{{ cart_item.product.images.url }}" alt="product image"></td>
+                        <!-- Product Name -->
+                        <td><a href="{{ cart_item.product.get_url }}" class="link-name">{{ cart_item.product.title_online }}</a></td>
+                        <!-- Product Size -->
+                        <td>
+                            {% if cart_item.variations.all %}
+                            {% for item in cart_item.variations.sizes %}
+                            {{ item.variation_value | capfirst }}
+                            {% endfor %}
+                            {% endif %}
+                        </td>
+                        <!-- Product Color -->
+                        <td>
+                            {% if cart_item.variations.all %}
+                            {% for item in cart_item.variations.colors %}
+                            {{ item.variation_value | capfirst }}
+                            {% endfor %}
+                            {% endif %}
+                        </td>
+                        <!-- Product Quantity -->
+                        <td>
+                            <div class="quantity-buttons">
+                                <!-- Button to decrease the quantity -->
+                                <a href="{% url 'remove_cart' cart_item.product.id cart_item.id %}"
+                                    class="button-cart1">
+                                    <button type="button" onclick="decrementQuantity(this)"
+                                        data-product-id="{{ cart_item.product.id }}">-</button>
+                                </a>
+                                <!-- Display the current quantity -->
+                                <span class="product-quantity">{{ cart_item.quantity }}</span>
+                                <form class="form-product" action="{% url 'add_cart' cart_item.product.id %}" method="POST">
+                                    {% csrf_token %}
+                                    {% for item in cart_item.variations.all %}
+                                    <input type="hidden" name="{{ item.variation_category | lower }}" value="{{ item.variation_value | capfirst }}">
+                                    {% endfor %}
+                                    <!-- Button to increase the quantity -->
+                                    <a href="#" class="button-cart2">
+                                        <button type="submit" onclick="incrementQuantity(this)" data-product-id="{{ cart_item.product.id }}">+</button>
+                                    </a>
+                                </form>
+                            </div>
+                        </td>
+                        <!-- Product Unit Price -->
+                        <td>{{ cart_item.product.price|floatformat:2 }}€</td>
+                        <!-- Product Total Price -->
+                        <td>{{ cart_item.sub_total|floatformat:2 }}€</td>
+                        <!-- Remove Cart Item -->
+                        <td>
+                            <a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id %}" onclick="return confirm('Are you sure you want to delete l\'article ?')">
+                                <button class="delete-button">🗑️</button>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container-cart">
+        <div class="cart-wrapper">
+            <div class="cart-summary">
+                <!-- Cart Summary -->
+                <h4>Cart Summary</h4>
+                <div class="summary-item">
+                    <p>Subtotal : </p><span>{{ total|floatformat:2 }}€</span>
+                </div>
+                <div class="summary-item">
+                    <p>Discount code :</p>
+                    <!--  Input field for the discount code -->
+                    <input type="text" id="discountCode" name="discountCode">
+                </div>
+                <div class="summary-item">
+                    <!-- Delivery field -->
+                    <p>Delivery Option : </p><span>Free</span>
+                </div>
+                <div class="summary-item">
+                    <!-- Tax field -->
+                    <p>Taxes included : </p><span>{{ tax|floatformat:2 }}€</span>
+                </div>
+                <div class="summary-item total">
+                    <!-- Final price -->
+                    <p>Final total : </p><span>{{ total|floatformat:2 }}€</span>
+                </div>
+                <div class="checkout-buttons">
+                    <!-- Link to continue shopping -->
+                    <a href="{% url 'store' %}">
+                        <button type="button">Continue Shopping</button>
+                    </a>
+                    <!-- Button to proceed to checkout -->
+                    <button type="button" onclick="return confirm('Thank you for your purchase !')">Proceed to checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+</div>
+
+<!-- JavaScript Functions -->
+<script>
+    // Function to increment quantity
+    function incrementQuantity(buttonElement) {
+        var quantitySpan = buttonElement.parentElement.querySelector('.product-quantity');
+        var currentQuantity = parseInt(quantitySpan.innerText);
+        quantitySpan.innerText = currentQuantity + 1;
+    }
+    // Function to decrement quantity
+    function decrementQuantity(buttonElement) {
+        var quantitySpan = buttonElement.parentElement.querySelector('.product-quantity');
+        var currentQuantity = parseInt(quantitySpan.innerText);
+        if (currentQuantity > 1) {
+            quantitySpan.innerText = currentQuantity - 1;
+        }
+    }
+</script>
+{% endblock %}

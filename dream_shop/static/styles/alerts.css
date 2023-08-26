@@ -1,0 +1,40 @@
+/* Styles for the container_alert class */
+.container_alert {
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #315D68;
+}
+
+/* Styles for the alert class */
+.alert {
+  flex-grow: 1;
+  color: white;
+}
+
+/* Styles for the close class */
+.close {
+  font-size: 20px;
+  padding: 1px;
+  line-height: 1;
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+/* Styles for the close-icon class */
+.close-icon {
+  cursor: pointer;
+}
+
+/* Styles for the errorlist class */
+.errorlist {
+  list-style-type: none;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  background-color: red;
+}

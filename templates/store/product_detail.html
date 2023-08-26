@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Start of Product Detail Card -->
+<div class="product-card-detail">
+    <div class="product-image-detail">
+        <!-- Main Product Image -->
+        <img id="product-main-image" src="{{ single_product.images.url }}" alt="Item Picture">
+        <!-- Product Thumbnails -->
+        <div class="product-thumbnails">
+            <!-- Second Image Thumbnail -->
+            {% if single_product.second_image %}
+            <img class="product-thumbnail" src="{{ single_product.second_image.url }}" alt="Image 2 of the article">
+            {% endif %}
+            <!-- Third Image Thumbnail -->
+            {% if single_product.third_image %}
+            <img class="product-thumbnail" src="{{ single_product.third_image.url }}" alt="Image 3 of the article">
+            {% endif %}
+            <!-- Fourth Image Thumbnail -->
+            {% if single_product.fourth_image %}
+            <img class="product-thumbnail" src="{{ single_product.fourth_image.url }}" alt="Image 4 of the article">
+            {% endif %}
+            <!-- Fifth Image Thumbnail -->
+            {% if single_product.fifth_image %}
+            <img class="product-thumbnail" src="{{ single_product.fifth_image.url }}" alt="Image 5 of the article">
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="product-info-detail">
+        <!-- Add to Cart Form -->
+        <form action="{% url 'add_cart' single_product.id %}" method="POST">
+            {% csrf_token %}
+            <!-- Product Title -->
+            <h2>{{ single_product.title_online}}</h2>
+            <!-- Product Price -->
+            <h3>{{ single_product.price|floatformat:2 }}</h3>
+            <!-- Product Description -->
+            <p>{{ single_product.description }}</p>
+            <!-- Select Quantity and Options -->
+            <div class="select-quantity-detail">
+                <div>
+                    <!-- Select Size -->
+                    <label for="product-size">Size:</label>
+                    <select id="product-size" name="size" required>
+                        <option value="" disabled selected>Choose size</option>
+                        {% for i in single_product.variation_set.sizes %}
+                        <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <!-- Select Color -->
+                    <label for="product-color">Color:</label>
+                    <select id="product-color" name="color" required>
+                        <option value="" disabled selected>Choose color</option>
+                        {% for i in single_product.variation_set.colors %}
+                        <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            {% if single_product.stock <= 0 %} <!-- Out of Stock Message -->
+                <h5 class="text-danger">Out of stock</h5>
+                {% else %}
+                <!-- Add to Cart Button -->
+                <a class="add-to-cart-link">
+                    <button type="submit" class="btn-detail">Add to Cart<i
+                            class="fas fa-shopping-cart"></i></button>
+                </a>
+                {% endif %}
+        </form>
+    </div>
+</div>
+<!-- End of Product Detail Card -->
+
+
+<!-- JavaScript Thumbnail Functionality -->
+<script>
+    window.addEventListener('load', function () {
+        var thumbnails = document.getElementsByClassName('product-thumbnail');
+
+        for (var i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].addEventListener('click', function () {
+                var mainImage = document.querySelector('#product-main-image');
+                var mainImageUrl = mainImage.src;
+
+                var thumbnailImageUrl = this.src;
+
+                // Swap Main Image and Thumbnail Image URLs
+                mainImage.src = thumbnailImageUrl;
+                this.src = mainImageUrl;
+            });
+        }
+    });
+</script>
+
+{% endblock %}

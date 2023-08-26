@@ -1,0 +1,46 @@
+{% if messages %}
+{% for message in messages %}
+<!-- Message Container -->
+<div id="message" class="container_alert">
+    <div {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %} role="alert">
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}<strong>Important:</strong> {% endif %}
+        {{ message }}
+    </div>
+    <!-- Close Button -->
+    <button type="button" class="close" data-dismiss="alert">
+        <span class="close-icon" onclick="this.parentElement.style.display='none';">&times;</span>
+    </button>
+</div>
+{% endfor %}
+{% endif %}
+
+<!-- Javascript function -->
+<script>
+(function() {
+  // Function to close the message
+  function closeMessage() {
+    var container = this.parentElement;
+    container.style.display = 'none';
+  }
+
+  // Attach the closeMessage function to all elements with the "close" class
+  var closeButtons = document.getElementsByClassName('close');
+  for (var i = 0; i < closeButtons.length; i++) {
+    closeButtons[i].onclick = closeMessage;
+  }
+
+  // Automatically close the message after a delay of 4 seconds
+  setTimeout(function() {
+    var message = document.getElementById('message');
+    if (message) {
+      // Apply transition effect to fade out the message
+      message.style.transition = 'opacity 1s';
+      message.style.opacity = '0';
+      setTimeout(function() {
+        // Hide the message container after the transition
+        message.style.display = 'none';
+      }, 1000);
+    }
+  }, 5000);
+})();
+</script>

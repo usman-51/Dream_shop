@@ -1,0 +1,486 @@
+/* ###################################################################################################
+   #########################################  FONT IMPORT  ###########################################
+   ################################################################################################### */
+
+/* Font import */
+@font-face {
+  font-family: 'Ananda';
+  src: url('fonts/Ananda\ Black\ Personal\ Use.ttf');
+}
+
+/* ###################################################################################################
+   #########################################  NAVBAR STYLE  ##########################################
+   ################################################################################################### */
+
+/* Navigation bar style */
+.nav-bar {
+  position: relative;
+  color: #fff;
+  margin-top: -23px;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+}
+
+/* Navigation bar list style */
+.nav-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-left: 30px;
+}
+
+/* Navigation bar background style */
+.nav-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, #315D68, #1a2e45);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  z-index: -1;
+}
+
+/* Navigation bar list item style */
+.nav-bar li {
+  position: relative;
+}
+
+/* Navigation bar link style */
+.nav-bar a {
+  display: block;
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: white;
+  font-family: 'Ananda', arial, cursive, sans-serif;
+  padding: 1rem 2rem;
+  transition: all 0.4s ease;
+}
+
+/* Navigation bar link hover style */
+.nav-bar a:hover {
+  background-color: rgba(255,255,255,0.1);
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 15px;
+  text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  cursor: pointer;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ###################################################################################################
+   #########################################  SUBMENU STYLE  #########################################
+   ################################################################################################### */
+
+/* Navigation bar submenu style */
+.nav-bar .menu ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(49, 93, 104, 0.8);
+}
+
+/* Navigation bar submenu style continued */
+.nav-bar .menu ul ul {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+/* Navigation bar submenu hover style */
+.nav-bar .menu li:hover > ul {
+  display: block;
+  border-radius: 5px;
+  width: 200px;
+  margin-top: 0;
+  margin-left: -2px;
+  text-align: center;
+  border: 1px solid #315D68;
+}
+
+/* Navigation bar submenu hover style continued */
+.nav-bar .menu ul li:hover > ul {
+  display: block;
+  border-radius: 5px;
+  width: 200px;
+  margin-top: 3px;
+  margin-left: 0;
+  text-align: center;
+}
+
+/* Navigation bar submenu link style */
+.nav-bar .menu ul a {
+  color: white;
+  font-size: 19px;
+  padding-left: 0;
+  text-shadow: none;
+  margin-top: 10px;
+}
+
+/* Navigation bar submenu link hover style */
+.nav-bar .menu ul a:hover {
+  background-color: transparent;
+  color: #fff;
+  text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  cursor: pointer;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ###################################################################################################
+   #######################################  NAV SECTION STYLE  #######################################
+   ################################################################################################### */
+
+/* Navigation section style */
+.nav-section {
+  display: flex;
+  gap: 0.5em; 
+  margin-right: 2em; 
+}
+
+/* Navigation section link style */
+.nav-section a {
+  margin-right: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Navigation section link hover style */
+.nav-section a:hover {
+  color: #fff;
+  text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  cursor: pointer;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Cart bubble style */
+#cart-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  right: 4.8rem;
+  transform: translate(50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #315D68;
+  border: 0.5px solid yellow;
+  color: white;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+/* ###################################################################################################
+   ########################################  SEARCH BAR STYLE  #######################################
+   ################################################################################################### */
+
+/* Search bar style */
+.search-bar {
+  padding: 1rem;
+}
+
+/* Search bar input style */
+.search-bar input {
+  border: 1px solid #315D68;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 15px;
+  width: 420px;
+  height: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* ###################################################################################################
+   #########################################  STICKY STYLE  ##########################################
+   ################################################################################################### */
+
+/* Sticky element style */
+.sticky {
+  position: fixed;
+  top: 0;
+  margin-top: 1px;
+  width: 100%;
+}
+
+/* Dummy element for handling sticky bar */
+#dummy_nav {
+  height: 80px;
+}
+
+/* ###################################################################################################
+   ########################################  LOG CONNECTION  #########################################
+   ################################################################################################### */
+
+/* Style for the title when logged in */
+.title_open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  margin-right: 30px;
+  font-family: 'Ananda';
+  letter-spacing: 2px;
+  color: #FFD700;
+}
+
+
+/* ###################################################################################################
+   #########################################  MEDIA QUERIES  #########################################
+   ################################################################################################### */
+
+
+  /************** 1750px *****************/
+
+  @media screen and (min-width: 1271px) and (max-width: 1750px) {
+    .nav-section a {
+      color: white;
+      text-decoration: none;
+      margin: 0px;
+    }
+    .nav-bar {
+      padding: 10px 0;
+      padding-top: 10px;
+      height: 65px;
+    }
+    .nav-bar ul {
+      padding-left: 10px;
+    }
+    .nav-bar a {
+      display: block;
+      font-size: 18px;
+      padding: 1rem 0.9rem;
+    }
+    .search-bar {
+      padding: 1rem;
+    }
+    .search-bar input {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 15px;
+      width: 350px;
+      height: 30px;
+      margin-right: 0px;
+    }
+    #cart-items {
+      top: 31%;
+      right: 2.5rem;
+    }
+  }
+  
+  /************** 1250px *****************/
+  
+  @media screen and (min-width: 1024px) and (max-width: 1270px) {
+    .logo img {
+      width: 300px;
+      height: 90px;
+    }
+    .social-icons img {
+      height: 60%;
+    }
+    .promo-message {
+      padding: 7px 0;
+      font-size: 1.2em;
+    }
+    .nav-bar {
+      padding: 10px 0;
+      padding-top: 10px;
+      height: 65px;
+    }
+    .nav-bar ul {
+      padding-left: 10px;
+    }
+    .nav-bar a {
+      display: block;
+      font-size: 18px;
+      padding: 1rem 0.9rem;
+    }
+    .search-bar input {
+      font-size: 14px;
+      width: 290px;
+      height: 19px;
+    }
+    .nav-bar .menu li:hover>ul,
+    .nav-bar .menu ul li:hover>ul {
+      width: 100px;
+    }
+    .nav-bar .menu ul a {
+      font-size: 15px;
+      padding-left: 0;
+      margin-top: 0px;
+    }
+    #cart-items {
+    top: 32%;
+    right: 3.6rem;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+  }
+  
+  /******************************* 831px ***************************/
+  @media screen and (min-width: 948px) and (max-width: 1023px)  {
+    .logo img {
+      width: 200px;
+      height: 60px;
+    }
+    .social-icons img {
+      height: 50%;
+    }
+    .promo-message {
+      padding: 2px 0;
+      font-size: 1em;
+    }
+    .nav-bar {
+      padding: 10px 0;
+      display: flex;
+      padding-top: 10px;
+      height: 45px;
+    }
+    .nav-bar ul {
+      padding-left: 1px;
+    }
+    .nav-bar a {
+      font-size: 15px;
+      padding: 1rem;
+    }
+    .search-bar input {
+      width: 110px;
+      height: 10px;
+    }
+    #cart-items {
+      top: 23%;
+      right: 4.8rem;
+      width: 15px;
+      height: 15px;
+      font-size: 12px;
+    }
+  }
+  
+  /************** jusqu'à 767px *****************/
+  
+  @media screen and (min-width: 768px) and (max-width: 947px) {
+    .social-icons img {
+      width: 20px;
+      height: 20px;
+    }
+    .promo-message {
+      padding: 2px 0;
+      font-size: 1em;
+    }
+    .logo img {
+      width: 200px;
+      height: 60px;
+    }
+    .social-icons img {
+      height: 50%;
+    }
+    .promo-message {
+      padding: 2px 0;
+      font-size: 1em;
+    }
+    .nav-bar {
+      padding: 10px 0;
+      display: flex;
+      padding-top: 10px;
+      height: 45px;
+      padding: 0;
+    }
+    .nav-bar ul {
+      padding-left: 1px;
+      margin: -20px;
+      margin-right: -45px;
+    }
+    .nav-bar a {
+      font-size: 10px;
+    }
+    .search-bar input {
+      width: 50px;
+      height: 10px;
+      font-size: 15px;
+      margin-left: 10px;
+    }
+    #cart-items {
+      top: 23%;
+      right: 4.8rem;
+      width: 15px;
+      height: 15px;
+      font-size: 12px;
+    }
+    /* Element factice pour gérer la sticky bar */
+    #dummy_nav {
+      height: 47px;
+}
+  }
+  
+  @media screen and (max-width: 767px) {
+    .social-icons img {
+      margin-left: -10px;
+      width: 20px;
+      height: 20px;
+    }
+    .promo-message {
+      padding: 2px 0;
+      font-size: 1em;
+    }
+    .logo img {
+      width: 200px;
+      height: 60px;
+    }
+    .social-icons img {
+      height: 50%;
+    }
+    .promo-message {
+      padding: 2px 0;
+      font-size: 1em;
+    }
+    .nav-bar {
+      padding: 10px 0;
+      display: flex;
+      padding-top: 10px;
+      height: 45px;
+      padding: 0;
+    }
+    .nav-bar ul {
+      padding-left: 1px;
+    }
+    .nav-bar a {
+      font-size: 10px;
+      padding: 1.2rem;
+    }
+    .search-bar input {
+      width: 50px;
+      height: 10px;
+      font-size: 15px;
+      margin-left: 10px;
+    }
+    #cart-items {
+      top: 23%;
+      right: 2rem;
+      width: 15px;
+      height: 15px;
+      font-size: 12px;
+    }
+    /* Element factice pour gérer la sticky bar */
+    #dummy_nav {
+      height: 47px;
+ } 
+}

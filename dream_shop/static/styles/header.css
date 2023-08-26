@@ -1,0 +1,138 @@
+/* ###################################################################################################
+   ##########################################  STYLE GLOBAL  #########################################
+   ################################################################################################### */
+
+/* Global reset styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles for body and html: flex layout, font family, prevent horizontal scrolling */
+body, html {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ###################################################################################################
+   ############################################  STYLE HEADER  #######################################
+   ################################################################################################### */
+
+/* Styles for the top header: position, gradient background, box shadow, flex layout, padding */
+.top-header {
+  position: relative;
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  margin-bottom: 23px;
+  z-index: 1;
+}
+
+/* ###################################################################################################
+   ##########################################  LOGO STYLE  ###########################################
+   ################################################################################################### */
+
+/* Styles for the logo */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Styles for the logo image */
+.logo img {
+  width: 500px;
+  height: 150px;
+  transition: transform 0.2s;
+}
+
+/* ###################################################################################################
+   #######################################  SOCIAL ICONS STYLE  ######################################
+   ################################################################################################### */
+
+/*  Styles for the social icons */
+.social-icons {
+  position: absolute;
+  right: 40px;
+  top: 10%;
+  display: flex;
+  gap: 20px;
+}
+
+/* Styles for social icon images */
+.social-icons img {
+  height: 80%;
+  transition: transform 0.3s;
+}
+
+/* Hover effect for social icon images */
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* ###################################################################################################
+   ###################################  PROMOTIONAL MESSAGE STYLE  ###################################
+   ################################################################################################### */
+
+/* Styles for the promotional message */
+.promo-message {
+  text-align: center;
+  padding: 10px 0;
+  font-family: 'Cinzel Decorative', cursive, sans-serif;
+  font-size: 1.5em;
+  color: #fff;
+  background: linear-gradient(to right, #315D68, #1a2e45);
+  text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  border-bottom: 1px solid #315D68;
+}
+
+/* Styles for the promotional message when it is empty */
+.promo-message:empty {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  text-shadow: none;
+  animation: none;
+}
+
+/* Animation effect for the promotional message */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  }
+
+  50% {
+    text-shadow: 0 0 10px pink, 0 0 15px rgb(220, 146, 159), 0 0 20px pink, 0 0 25px pink;
+  }
+
+  100% {
+    text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  }
+}
+
+/* Styles for the promotional message when it is not empty */
+.promo-message:not(:empty) {
+  animation: glow 1s infinite;
+}
+
+/* ###################################################################################################
+   #########################################  MEDIA QUERIES  #########################################
+   ################################################################################################### */
+
+@media screen and (max-width: 600px) {
+  .logo img {
+    width: 400px;
+    height: 120px;
+    transition: transform 0.2s;
+  }
+}

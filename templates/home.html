@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- MAIN SECTION -->
+<main>
+    <!-- HOME CAROUSEL SECTION -->
+    <section class="home-carousel">
+        <div class="container-index">
+            <div id="slide">
+                <!-- Carousel Item 1 -->
+                <div class="item" style="background-image: url(static/styles/images/carrousel/men01.jpg);">
+                    <div class="content">
+                        <div class="name">News</div>
+                        <p class="des">Discover the latest men's trends !</p>
+                        <a class="btn-car" href="{% url 'store' %}?gender=men">Discover</a>
+                    </div>
+                </div>
+                <!-- Carousel Item 2 -->
+                <div class="item" style="background-image: url(static/styles/images/carrousel/women01.jpg);">
+                    <div class="content">
+                        <div class="name">News</div>
+                        <p class="des">Irresistible feminine styles, discover our new arrivals !</p>
+                        <a class="btn-car" href="{% url 'store' %}?gender=women">Discover</a>
+                    </div>
+                </div>
+                <!-- Carousel Item 3 -->
+                <div class="item" style="background-image: url(static/styles/images/carrousel/women02.jpg);">
+                    <div class="content">
+                        <div class="name">News</div>
+                        <p class="des">Discover the latest women's trends !</p>
+                        <a class="btn-car" href="{% url 'store' %}?gender=women">Discover</a>
+                    </div>
+                </div>
+                <!-- Carousel Item 4 -->
+                <div class="item" style="background-image: url(static/styles/images/carrousel/men02.jpeg);">
+                    <div class="content">
+                        <div class="name">News</div>
+                        <p class="des">Discover the latest trends for men !</p>
+                        <a class="btn-car" href="{% url 'store' %}?gender=men">Discover</a>
+                    </div>
+                </div>
+                <!-- Carousel Item 5 -->
+                <div class="item" style="background-image: url(static/styles/images/carrousel/women03.jpg);">
+                    <div class="content">
+                        <div class="name">News</div>
+                        <p class="des">Irresistible accessories: stand out !</p>
+                        <a class="btn-car"
+                            href="{% url 'store' %}?gender=women&category=clothingAccessWomen">Discover</a>
+                    </div>
+                </div>
+                <!-- Carousel Item 6 -->
+                <div class="item" style="background-image: url(static/styles/images/carrousel/men03.jpg);">
+                    <div class="content">
+                        <div class="name">News</div>
+                        <p class="des">Trendy accessories to perfect your style !</p>
+                        <a class="btn-car" href="{% url 'store' %}?gender=men&category=clothingAccessMen">Discover</a>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons-car">
+                <button id="prev-01"><i class="fa-solid fa-angle-left"></i></button>
+                <button id="next-01"><i class="fa-solid fa-angle-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: OUR BESTSELLERS -->
+    <section class="section-bestseller">
+        <h2 data-aos="fade-up" data-aos-duration="3000">Our Best Sellers</h2>
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                <img src="{{ product.images.url }}" alt="Produit Femme">
+                <h3 class="product-name">{{ product.title_online }}</h3>
+                <p class="product-price">{{ product.price|floatformat:2 }} €</p>
+                <a href="{{ product.get_url }}" class="product-button">Voir le produit</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- SECTION: ABOUT US -->
+    <section class="section-about" data-aos="fade-up" data-aos-duration="3000">
+        <img src="{% static 'styles/images/background-inscription.jpg' %}" alt="A propos de nous">
+        <div class="content">
+            <h2>About Us</h2>
+            <p>Welcome to "Fashion X", where style meets personality. Discover our selection
+                trendy clothing and accessories for men and women, designed to flatter every body type.
+                Find your happiness and let us welcome you with a smile !</p>
+            <a href="#" class="button">Learn more</a>
+        </div>
+    </section>
+
+    <!---------- SECTION: SERVICES -------->
+    <section class="services">
+        <!-- Service Item 1 -->
+        <div class="service-item">
+            <i class="fas fa-lock fa-2x"></i>
+            <h3>Secure payment</h3>
+        </div>
+        <!-- Service Item 2 -->
+        <div class="service-item">
+            <i class="fas fa-shipping-fast fa-2x"></i>
+            <h3>Quick delivery</h3>
+        </div>
+        <!-- Service Item 3 -->
+        <div class="service-item">
+            <i class="fas fa-undo fa-2x"></i>
+            <h3>Satisfied or refunded</h3>
+        </div>
+        <!-- Service Item 4 -->
+        <div class="service-item">
+            <i class="fas fa-headset fa-2x"></i>
+            <h3>Customer service</h3>
+        </div>
+    </section>
+</main>
+{% endblock %}

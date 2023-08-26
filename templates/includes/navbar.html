@@ -1,0 +1,128 @@
+{% load static %}
+
+<!-- HEADER -->
+<header>
+    <div class="promo-message"></div>
+    <div class="top-header">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="{% url 'store' %}">
+                <img src="{% static 'styles/images/MA_BOUTIQUE_LOGO_Fond-Blanc.png' %}" alt="Logo boutique">
+            </a>
+        </div>
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href=https://www.instagram.com/maboutiquedereve/ target="_blank" rel="noopener"><img
+                    src="{% static 'styles/images/logos-social/logo-instagram.svg' %}" alt="logo instagram"></a>
+            <a href="https://www.facebook.com/profile.php?id=100089077755487" target="_blank" rel="noopener"><img
+                    src="{% static 'styles/images/logos-social/logo-facebook.svg' %}" alt="logo facebook"></a>
+        </div>
+    </div>
+    <!-- Navbar -->
+    <nav class="nav-bar sticky-nav" id="navbar_fix">
+        <ul class="menu">
+            <li>
+                <!-- Home link -->
+                <a href="{% url 'home' %}">Welcome</a>
+            </li>
+            <li>
+                <!-- Women's section -->
+                <a href="{% url 'store' %}?gender=women">Women</a>
+                <ul>
+                    <li>
+                        <!-- Women's clothing -->
+                        <a href="{% url 'store' %}?gender=women&category=clothingWomen">Clothes</a>
+                        <ul>
+                            {% for category in women_links %}
+                            <li>
+                                <!-- Specific category of women's clothing -->
+                                <a href="{{ category.get_url }}">{{ category.category_online }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        <!-- Women's accessories -->
+                        <a href="{% url 'store' %}?gender=women&category=clothingAccessWomen">Accessories</a>
+                        <ul>
+                            {% for category in women_acc %}
+                            <li>
+                                <!-- Specific category of women's accessories -->
+                                <a href="{{ category.get_url }}">{{ category.category_online }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        <!-- Complete women's collection -->
+                            <a href="{% url 'store' %}?gender=women">Complete Collection</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <!-- Men's section -->
+                <a href="{% url 'store' %}?gender=men">Male</a>
+                <ul>
+                    <li>
+                        <!-- Men's clothing -->
+                        <a href="{% url 'store' %}?gender=men&category=clothingMen">Clothes</a>
+                        <ul>
+                            {% for category in men_links %}
+                            <li>
+                                <!-- Specific category of men's clothing -->
+                                <a href="{{ category.get_url }}">{{ category.category_online }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        <!-- Men's accessories -->
+                        <a href="{% url 'store' %}?gender=men&category=clothingAccessMen">Accessories</a>
+                        <ul>
+                            {% for category in men_acc %}
+                            <li>
+                                <!-- Specific category of men's accessories -->
+                                <a href="{{ category.get_url }}">{{ category.category_online }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        <!-- Complete men's collection -->
+                        <a href="{% url 'store' %}?gender=men">Complete Collection</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li>
+                <!-- Contact section -->
+                <a href="#contact_section">Contact</a>
+            </li>
+        </ul>
+
+        <!-- Search Bar -->
+        <form class="search-bar" action="{% url 'search' %}" method="GET">
+            <!-- Search input field -->
+            <input type="text" placeholder="To research..." name="keyword">
+        </form>
+
+        <!-- Navigation Section -->
+        <div class="nav-section">
+            {% if user.id is None %}
+            <p class="title_close"></p>
+            <!-- Login link -->
+            <a href="{% url 'login' %}">To log in</a>
+            <!-- Register link -->
+            <a href="{% url 'register' %}">Register</a>
+            <!-- Shopping cart link -->
+            <a href="{% url 'cart' %}" class="nav-cart"><i class="fas fa-shopping-cart"></i><span id="cart-items">{{ cart_count }}</span></a>
+            {% else %}
+            <p class="title_open">Welcome {{ user.first_name }}</p>
+            <a href="{% url 'logout' %}">Sign out</a>
+            <a href="{% url 'cart' %}" class="nav-cart"><i class="fas fa-shopping-cart"></i><span id="cart-items">{{ cart_count }}</span></a>
+            {% endif %}
+        </div>
+    </nav>
+    <div id="dummy_nav" style="display:none;"></div>
+
+</header>

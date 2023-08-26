@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Welcome to Fashion X, your number one destination for all your fashion needs. We are committed to providing you with the best fashion trends, with an emphasis on quality, customer service, and uniqueness.">
+    <meta name="keywords"
+        content="Fashion, clothing, fashion trends, online store, quality clothing, customer service">
+    <meta name="author" content="Muhammad Usman">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- PAGE TITLE -->
+    <title>Fashion X</title>
+    <!-- PAGE CSS -->
+    <link rel="icon" href="{% static 'styles/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/header.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/store.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/product_details.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/alerts.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/register.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/password-forgot.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+
+    <!-- LOGO LIBRARY -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" />
+</head>
+
+<body>
+
+    <!-- navbar -->
+    {% include 'includes/navbar.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- footer -->
+    {% include 'includes/footer.html' %}

@@ -1,0 +1,128 @@
+/* Configuration du titre de la page */
+.page-title {
+  margin-top: 19px;
+  text-align: center;
+  font-size: 5.5em;
+  color: #315D68;
+  font-family: 'Ananda', arial, cursive, sans-serif;
+  padding: 50px;
+}
+/* Configuration de la grille de produits */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  text-align: center;
+}
+/* Configuration de la carte du produit */
+.product-card {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  width: 350px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 80px;
+  border: 1px solid whitesmoke;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  vertical-align: top;
+}
+/* Configuration de l'image du produit */
+.product-image {
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
+}
+/* Configuration de la face avant et arrière de l'image du produit */
+.image-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s linear;
+}
+/* Configuration de l'image dans la face de l'image du produit */
+.image-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Configuration de la face avant de l'image */
+.front {
+  transform: rotateY(0deg);
+}
+/* Configuration de la face arrière de l'image */
+.back {
+  transform: rotateY(180deg);
+}
+/* Configuration de l'animation de rotation au survol de l'image du produit */
+.product-card:hover .front {
+  {% if product.second_image %}
+    transform: rotateY(-180deg);
+  {% endif %}
+}
+
+/* Configuration de l'animation de rotation au survol de l'image du produit sans deuxième image */
+.product-card:hover .back {
+  {% if not product.second_image %}
+    transform: rotateY(0deg);
+  {% endif %}
+}
+
+/* Configuration du nom du produit */
+.product-name {
+  color: #315D68;
+  font-size: 1.5em;
+  margin-top: 15px;
+  font-family: 'Ananda', arial, cursive, sans-serif;
+}
+/* Configuration du prix du produit */
+.product-price {
+  color: #315D68;
+  font-size: 1.2em;
+  margin-top: 10px;
+  font-weight: 300;
+}
+/* Configuration boutton des détails du produit */
+.product-details {
+  display: inline-block;
+  font-family: 'Ananda', arial, cursive, sans-serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #315D68;
+  padding: 15px 20px;
+  border-radius: 25px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+/* Configuration des détails du produit au survol */
+.product-details:hover {
+  background-color: #1a2e45;
+  color: #ffffff;
+}
+/* Style pour le compteur de produits */
+.product_count {
+  font-family: 'Ananda';
+  color: #315D68;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  text-align: center;
+}
+/* Style pour les éléments <b> dans .product_count */
+.product_count b {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 5px;
+}

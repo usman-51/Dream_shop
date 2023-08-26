@@ -1,0 +1,241 @@
+/* ###################################################################################################
+   #########################################  FONT IMPORT  ###########################################
+   ################################################################################################### */
+
+/* Importation des polices de caractères */
+@font-face {
+  font-family: 'Ananda';
+  src: url('fonts/Ananda\ Black\ Personal\ Use.ttf');
+}
+
+/* ###################################################################################################
+   #########################################  NAVBAR STYLE  ##########################################
+   ################################################################################################### */
+
+/* Style de la barre de navigation */
+.nav-bar {
+  /* Positionnement, couleur, marge, padding, disposition, alignement, dimensionnement */
+  position: relative;
+  color: #fff;
+  margin-top: -23px;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 65px;
+}
+
+/* Style de la liste de la barre de navigation */
+.nav-bar ul {
+  /* Retrait des puces, réinitialisation des marges et paddings, disposition, alignement */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-left: 30px;
+}
+
+/* Style du fond de la barre de navigation */
+.nav-bar::before {
+  /* Positionnement, couleurs, dimensionnement, formes */
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, #315D68, #1a2e45);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  z-index: -1;
+}
+
+/* Style des éléments de la liste de la barre de navigation */
+.nav-bar li {
+  /* Positionnement */
+  position: relative;
+}
+
+/* Style des liens de la barre de navigation */
+.nav-bar a {
+  /* Affichage, taille de la police, retrait de la décoration, couleur, police, padding, transition */
+  display: block;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+  font-family: 'Ananda', arial, cursive, sans-serif;
+  padding: 1rem 2rem;
+  transition: all 0.4s ease;
+
+}
+
+/* Style des liens de la barre de navigation au survol */
+.nav-bar a:hover {
+  /* Couleurs, transformation, ombre, arrondissement, ombre du texte, pointeur, retrait de la transformation et de l'ombre */
+  background-color: rgba(255,255,255,0.1);
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 15px;
+  text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  cursor: pointer;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ###################################################################################################
+   #########################################  SUBMENU STYLE  #########################################
+   ################################################################################################### */
+
+/* Style du sous-menu de la barre de navigation */
+.nav-bar .menu ul {
+  /* Disposition, positionnement, dimensionnement, couleurs */
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(49, 93, 104, 0.8);
+}
+
+/* Suite du style du sous-menu de la barre de navigation */
+.nav-bar .menu ul ul {
+  /* Disposition, positionnement */
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+/* Style du sous-menu de la barre de navigation au survol */
+.nav-bar .menu li:hover > ul {
+  /* Disposition, arrondissement, largeur, marges, alignement du texte, bordure */
+  display: block;
+  border-radius: 5px;
+  width: 200px;
+  margin-top: 0;
+  margin-left: -2px;
+  text-align: center;
+  border: 1px solid #315D68;
+}
+
+/* Suite du style du sous-menu de la barre de navigation au survol */
+.nav-bar .menu ul li:hover > ul {
+  /* Disposition, arrondissement, largeur, marges, alignement du texte */
+  display: block;
+  border-radius: 5px;
+  width: 200px;
+  margin-top: 3px;
+  margin-left: 0;
+  text-align: center;
+}
+
+/* Style des liens du sous-menu de la barre de navigation */
+.nav-bar .menu ul a {
+  /* Couleur, taille de la police, padding, ombre du texte, marge */
+  color: white;
+  font-size: 19px;
+  padding-left: 0;
+  text-shadow: none;
+  margin-top: 10px;
+}
+
+/* Style des liens du sous-menu de la barre de navigation au survol */
+.nav-bar .menu ul a:hover {
+  /* Couleurs, ombre du texte, pointeur, retrait de la transformation et de l'ombre */
+  background-color: transparent;
+  color: #fff;
+  text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  cursor: pointer;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ###################################################################################################
+   #######################################  NAV SECTION STYLE  #######################################
+   ################################################################################################### */
+
+/* Style de la section de navigation */
+.nav-section {
+  /* Disposition, espacement, marge */
+  display: flex;
+  gap: 0.5em; 
+  margin-right: 2em; 
+}
+
+/* Style des liens de la section de navigation */
+.nav-section a {
+  /* Couleur, retrait de la décoration, marge */
+  color: white;
+  text-decoration: none;
+  margin: 0 0.1rem;
+}
+
+/* Style des liens de la section de navigation au survol */
+.nav-section a:hover {
+  /* Couleur, ombre du texte, pointeur, retrait de la transformation et de l'ombre */
+  color: #fff;
+  text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  cursor: pointer;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Style de la bulle du chariot*/
+#cart-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 34%;
+  right: 9.6rem;
+  transform: translate(50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #315D68;
+  border: 0.5px solid yellow;
+  color: white;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+
+/* ###################################################################################################
+   ########################################  SEARCH BAR STYLE  #######################################
+   ################################################################################################### */
+
+/* Style de la barre de recherche */
+.search-bar {
+  /* Padding */
+  padding: 1rem;
+}
+
+/* Style du champ de saisie de la barre de recherche */
+.search-bar input {
+  /* Bordure, couleur de fond, couleur, padding, taille de la police, arrondissement, largeur, hauteur, marge */
+  border: 1px solid #315D68;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 15px;
+  width: 420px;
+  height: 30px;
+  margin-right: 350px;
+}
+
+/* ###################################################################################################
+   #########################################  STICKY STYLE  ##########################################
+   ################################################################################################### */
+
+/* Style pour un élément sticky */
+.sticky {
+  /* Positionnement fixe : l'élément reste en place même lorsque l'utilisateur fait défiler la page */
+  position: fixed;
+  /* L'élément est placé tout en haut de la page */
+  top: 10px;
+  width: 100%;
+}

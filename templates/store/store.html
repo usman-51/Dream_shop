@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="background-store">
+    {% if 'search' in request.path %}
+    <!-- Display the "Search Result" title if the request path contains the string "search" -->
+    <h1 class="page-title">
+        Result of the research
+    </h1>
+    {% else %}
+    <!-- Display the title contained in the 'page_title' variable -->
+    <h1 class="page-title">
+        {{ page_title }}
+    </h1>
+    {% endif %}
+    <!-- Display the total number of articles -->
+    <span class="product_count">Total articles :<b>{{ product_count }}</b></span>
+    <div class="product-grid">
+        {% if products %}
+        <!-- Loop through the list of products -->
+        {% for product in products %}
+        <div class="product-card{% if not product.second_image %} no-second-image{% endif %}">
+            <div class="product-image">
+                <div class="image-face front">
+                    <!-- Display the main image of the product -->
+                    <img src="{{ product.images.url }}" alt="Front garment">
+                </div>
+                {% if product.second_image %}
+                <div class="image-face back">
+                    <!-- Display the secondary image of the product, if it exists -->
+                    <img src="{{ product.second_image.url }}" alt="back garment">
+                </div>
+                {% endif %}
+            </div>
+            <!-- Display the name of the product -->
+            <h2 class="product-name">{{ product.title_online }}</h2>
+            <!-- Display the price of the product -->
+            <p class="product-price">€ {{ product.price|floatformat:2 }}</p>
+            <!-- Display a link to view the product details -->
+            <a class="product-details" href="{{ product.get_url }}">See the details</a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <!-- Display a message when no products are available -->
+        <h2 class="page-title2">No result found...</h2>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Pagination for the store page -->
+<div class="pagination">
+    {% if products.has_other_pages %}
+    <div class="page-item">
+        {% if products.has_previous %}
+        <!-- Display a link to the previous page -->
+        <a class="page-link"
+            href="?gender={{ request.GET.gender }}&category={{ request.GET.category }}&page={{ products.previous_page_number }}">Previous Page</a>
+        {% else %}
+        <!-- Disable the link if no previous page is available -->
+        <span class="page-link disabled"></span>
+        {% endif %}
+    </div>
+
+    {% for num in products.paginator.page_range %}
+    {% if products.number == num %}
+    <div class="page-item active">
+        <!-- Display the current page number as an active link -->
+        <span class="page-link">{{ num }}</span>
+    </div>
+    {% else %}
+    <div class="page-item">
+        <!-- Display a link to the corresponding page -->
+        <a class="page-link"
+            href="?gender={{ request.GET.gender }}&category={{ request.GET.category }}&page={{ num }}">{{ num }}</a>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <div class="page-item">
+        {% if products.has_next %}
+        <!-- Display a link to the next page -->
+        <a class="page-link"
+            href="?gender={{ request.GET.gender }}&category={{ request.GET.category }}&page={{ products.next_page_number }}">Next Page</a>
+        {% else %}
+        <!-- Disable the link if no next page is available -->
+        <span class="page-link disabled"></span>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,189 @@
+/* Configuration for the page title */
+.page-title {
+  margin-top: 19px;
+  text-align: center;
+  font-size: 5.5em;
+  color: #315D68;
+  font-family: 'Ananda', arial, cursive, sans-serif;
+  padding: 50px;
+}
+.page-title2{
+  text-align: center;
+  color: red;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: 'Ananda', arial, cursive, sans-serif;
+  letter-spacing: 2px;
+}
+
+/* Configuration for the product grid */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Configuration for the product card */
+.product-card {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  width: 350px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 80px;
+  border: 1px solid whitesmoke;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  vertical-align: top;
+}
+
+/* Configuration for the product image */
+.product-image {
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Configuration for the front and back faces of the product image */
+.image-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s linear;
+}
+
+/* Configuration for the image inside the product image face */
+.image-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-card.no-second-image:hover .front {
+  transform: rotateY(0deg);
+}
+
+.product-card.no-second-image:hover .back {
+  transform: rotateY(180deg);
+}
+
+/* Configuration for the front face of the image */
+.front {
+  transform: rotateY(0deg);
+}
+
+/* Configuration for the back face of the image */
+.back {
+  transform: rotateY(180deg);
+}
+
+/* Configuration for the rotation animation on hover of the product image */
+.product-image:hover .front {
+  transform: rotateY(-180deg);
+}
+
+/* Configuration for the rotation animation on hover of the product image without a second image */
+.product-image:hover .back {
+  transform: rotateY(0deg);
+} 
+
+/* Configuration for the product name */
+.product-name {
+  color: #315D68;
+  font-size: 1.5em;
+  margin-top: 15px;
+  font-family: 'Ananda', arial, cursive, sans-serif;
+}
+
+/* Configuration for the product price */
+.product-price {
+  color: #315D68;
+  font-size: 1.2em;
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+/* Configuration for the product details button */
+.product-details {
+  display: inline-block;
+  font-family: 'Ananda', arial, cursive, sans-serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #315D68;
+  padding: 15px 20px;
+  border-radius: 25px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Configuration for the product details button on hover */
+.product-details:hover {
+  background-color: #1a2e45;
+  color: #ffffff;
+}
+
+/* Style for the product count */
+.product_count {
+  font-family: 'Ananda';
+  color: #315D68;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  text-align: center;
+}
+
+/* Style for the <b> elements in .product_count */
+.product_count b {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 5px;
+}
+
+/* Style for the empty cart message */
+.text-danger {
+  color: red;
+  font-size: 25px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* #################### PAGINATION ################### */
+
+/* General layout for pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+/* Spacing between pagination elements */
+.page-item {
+  margin: 0 5px;
+}
+
+/* Style for links in pagination */
+.page-link {
+  color: #315D68;
+  text-decoration: none;
+}
+
+/* Style for links in disabled and active pagination items */
+.page-item.disabled .page-link,
+.page-item.active .page-link {
+  color: red;
+}

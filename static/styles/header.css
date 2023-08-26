@@ -1,0 +1,278 @@
+/* ###################################################################################################
+   ##########################################  STYLE GLOBAL  #########################################
+   ################################################################################################### */
+
+/* Réinitialisation globale des styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles pour body et html : mise en place d'une disposition flex, définition d'une police, et prévention du défilement horizontal */
+body, html {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ###################################################################################################
+   ############################################  STYLE HEADER  #######################################
+   ################################################################################################### */
+
+/* Styles pour le haut du header : position, arrière-plan en dégradé, ombre portée, disposition flex, padding */
+.top-header {
+  position: relative;
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  margin-bottom: 23px;
+  z-index: 1;
+}
+
+/* ###################################################################################################
+   ##########################################  STYLE LOGO  ###########################################
+   ################################################################################################### */
+
+/* Styles pour le logo : disposition flex */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Styles pour l'image du logo : dimensions, transition */
+.logo img {
+  width: 500px;
+  height: 150px;
+  transition: transform 0.2s;
+}
+
+/* ###################################################################################################
+   #######################################  STYLE ICÔNES SOCIALES  ######################################
+   ################################################################################################### */
+
+/* Styles pour les icônes sociales : position, disposition flex, espace entre les éléments */
+.social-icons {
+  position: absolute;
+  right: 40px;
+  top: 10%;
+  display: flex;
+  gap: 20px;
+}
+
+/* Styles pour les images des icônes sociales : hauteur, transition */
+.social-icons img {
+  height: 80%;
+  transition: transform 0.3s;
+}
+
+/* Effet de survol pour les images des icônes sociales */
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* ###################################################################################################
+   #########################################  MESSAGE PROMOTIONNEL  #########################################
+   ################################################################################################### */
+
+/* Styles pour le message promotionnel : alignement du texte, padding, police, taille de police, couleur, arrière-plan, ombre du texte, bordure */
+.promo-message {
+  text-align: center;
+  padding: 10px 0;
+  font-family: 'Cinzel Decorative', cursive, sans-serif;
+  font-size: 1.5em;
+  color: #fff;
+  background: linear-gradient(to right, #315D68, #1a2e45);
+  text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  border-bottom: 1px solid #315D68;
+}
+
+/* Styles pour le message promotionnel quand il est vide */
+.promo-message:empty {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  text-shadow: none;
+  animation: none;
+}
+
+/* Effet d'animation pour le texte promotionnel */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  }
+
+  50% {
+    text-shadow: 0 0 10px pink, 0 0 15px rgb(220, 146, 159), 0 0 20px pink, 0 0 25px pink;
+  }
+
+  100% {
+    text-shadow: 0 0 5px pink, 0 0 10px rgb(220, 146, 159), 0 0 15px pink, 0 0 20px pink;
+  }
+}
+
+/* Styles pour le message promotionnel quand il n'est pas vide */
+.promo-message:not(:empty) {
+  animation: glow 1s infinite;
+}
+
+
+/* ###################################################################################################
+   #########################################  MEDIA QUERIES  #########################################
+   ################################################################################################### */
+
+
+  /************** 1750px *****************/
+
+@media screen and (max-width: 1750px) {
+  .nav-section a {
+    color: white;
+    text-decoration: none;
+    margin: 0px;
+  }
+  .search-bar {
+    padding: 1rem;
+  }
+  .search-bar input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 15px;
+    width: 400px;
+    height: 30px;
+    margin-right: 0px;
+  }
+  #cart-items {
+    right: 9.5rem;
+  }
+}
+
+/************** 1250px *****************/
+
+@media screen and (max-width: 1270px) {
+  .logo img {
+    width: 300px;
+    height: 90px;
+  }
+  .social-icons img {
+    height: 60%;
+  }
+  .promo-message {
+    padding: 7px 0;
+    font-size: 1.2em;
+  }
+  .nav-bar {
+    padding: 10px 0;
+    padding-top: 40px;
+    height: 65px;
+  }
+  .nav-bar ul {
+    padding-left: 10px;
+  }
+  .nav-bar a {
+    display: block;
+    font-size: 18px;
+    padding: 1rem 0.9rem;
+  }
+  .search-bar input {
+    font-size: 14px;
+    width: 290px;
+    height: 19px;
+  }
+  .nav-bar .menu li:hover>ul,
+  .nav-bar .menu ul li:hover>ul {
+    width: 100px;
+  }
+  .nav-bar .menu ul a {
+    font-size: 15px;
+    padding-left: 0;
+    margin-top: 0px;
+  }
+  #cart-items {
+  top: 50%;
+  right: 5.8rem;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+}
+}
+
+/******************************* 850px ***************************/
+
+@media screen and (max-width: 831px) {
+  .logo img {
+    width: 200px;
+    height: 60px;
+  }
+  .social-icons img {
+    height: 50%;
+  }
+  .promo-message {
+    padding: 2px 0;
+    font-size: 1em;
+  }
+  .nav-bar {
+    padding: 10px 0;
+    display: flex;
+    padding-top: 40px;
+    height: 45px;
+  }
+  .nav-bar a {
+    font-size: 15px;
+  }
+  .search-bar input {
+    width: 115px;
+    height: 10px;
+  }
+  #cart-items {
+    top: 50%;
+    right: 5.8rem;
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+  }
+}
+
+/************** jusqu'à 760px *****************/
+
+@media screen and (max-width: 600px) {
+  .social-icons img {
+    display: none;  /* Cacher les logos des réseaux sociaux */
+  }
+ 
+  .logo img {
+    width: 150px;   /* Reduire la taille du logo */
+    height: 50px;
+  }
+  .promo-message {
+    padding: 2px 0;
+    font-size: 1em;
+  }
+  .nav-bar {
+    padding: 5px 0; /* Diviser la marge intérieure de la barre de navigation par 2 */
+    display: flex;
+    padding-top: 20px; /* Diviser le padding-top par 2 */
+  }
+  .nav-bar a {
+    font-size: 10px; /* Reduire la taille de la police */
+    margin-left: -2px;
+  }
+  .search-bar input {
+    display: none;
+  }
+  #cart-items {
+    top: -10%;
+    right: 2rem;
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+  }
+}
